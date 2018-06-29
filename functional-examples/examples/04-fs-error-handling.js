@@ -37,7 +37,7 @@ class Left {
   }
 
   chain(f) {
-    Left.of(this.x);
+    return Left.of(this.x);
   }
 
   // Left ignores f, simply passes x itself
