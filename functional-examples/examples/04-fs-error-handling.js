@@ -8,7 +8,7 @@ class Right {
 
   // like map but returns "unboxed" value
   chain(f) {
-    f(this.x);
+    return f(this.x);
   }
 
   // Right applies f to x
@@ -103,11 +103,15 @@ log(`Port: ${getPort('config.json')}`); // returns port number in json file
 
 const getPortSafeTest = fileName =>
   tryCatch(() => fs.readFileSync(fileName))
-    .chain(content => tryCatch(JSON.parse(content)))
-    .inspect();
+    .chain(content => tryCatch(() => JSON.parse(content)))
+    .fold(
+      e => 3000,
+      c => c.port
+    );
+    
 
 // Need to test the below - it keeps blowing up
-// log(`Bad file - Port: ${getPort('config-bad.json')}`); // blows up our program
+log(`Bad file - Port: ${getPortSafeTest('configBad.json')}`); // blows up our program
 
 
 
