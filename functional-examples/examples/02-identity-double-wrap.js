@@ -54,8 +54,8 @@ const percentToFloat = str =>
   Box
     .of(str) // Boxed x
     .map(str => str.replace(/\%/g, '')) // Box value after decimal place
-    .map(str => parseFloat(str))
-    .map(num => num/100);
+    .map(str => parseFloat(str)) // parse the string from prev map 
+    .map(num => num/100); // divide by 100
 log(percentToFloat(`12%`)); 
 
 const applyDiscount = (priceStr, discountStr) => {
@@ -67,7 +67,7 @@ const applyDiscount = (priceStr, discountStr) => {
     )
 }
 
-log(applyDiscount(`$20.00`, `5%`));
+log(`Total Cost: ${applyDiscount('$20.00', '5%')}`);
 
 
 
@@ -82,14 +82,14 @@ log(applyDiscount(`$20.00`, `5%`));
 //   )
 
 
-// console.log(`moneyToFloat(' $33 ') : `, moneyToFloat(' $33 ')) //=> Box(33)
-// console.log(`percentToFloat(' 1.23% ') : `, percentToFloat(' 1.23% ')) //=> Box(0.0123)
+// log(`moneyToFloat(' $33 ') : `, moneyToFloat(' $33 ')) //=> Box(33)
+// log(`percentToFloat(' 1.23% ') : `, percentToFloat(' 1.23% ')) //=> Box(0.0123)
 
 // const result = applyDiscount('$55', '20%')
 
-// console.log(`applyDiscount('$55', '20%') : `, result) //=> 44
+// log(`applyDiscount('$55', '20%') : `, result) //=> 44
 
-// console.log(
+// log(
 //   `applyDiscountInBox('$55', '20%') : `, 
 //   applyDiscountInBox('$55', '20%')
 // ) //=> Box(Box(44))
