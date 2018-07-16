@@ -53,9 +53,9 @@ log(cost);
 const percentToFloat = str => 
   Box
     .of(str) // Boxed x
-    .map(str => str.replace(/\%/g, '')) // Box value after decimal place
+    .map(str => str.replace(/\%/g, '')) // Box value after removing percent sign (%)
     .map(str => parseFloat(str)) // parse the string from prev map 
-    .map(num => num/100); // divide by 100
+    .map(num => num / 100); // divide by 100 to get decimal value
 log(percentToFloat(`12%`)); 
 
 const applyDiscount = (priceStr, discountStr) => {
